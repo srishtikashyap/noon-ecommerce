@@ -8,17 +8,10 @@ import {
   FlatList,
   StyleSheet,
   Image,
-  Button,
   Pressable,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../redux/store';
-import {
-  addToCart,
-  increment,
-  decrement,
-  removeFromCart,
-} from '../redux/features/cartSlice';
 import { useGetProductsQuery } from '../redux/api/productsApi';
 
 export default function SearchScreen({ navigation }: any) {
@@ -26,15 +19,6 @@ export default function SearchScreen({ navigation }: any) {
   const dispatch = useDispatch<AppDispatch>();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
-  const getQuantity = useCallback((id: string) =>
-    cartItems.find((item) => item.id === id)?.quantity || 0,
-    [cartItems]
-  );
-
-  const handleIncrement = (id: string) => dispatch(increment(id));
-  const handleDecrement = (id: string) => dispatch(decrement(id));
-  const handleRemove = (id: string) => dispatch(removeFromCart(id));
-  const handleAddToCart = (product: any) => dispatch(addToCart(product));
 
   const { data: products = [], isLoading, isError } = useGetProductsQuery();
 
