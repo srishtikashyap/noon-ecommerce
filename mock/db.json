@@ -1,0 +1,94 @@
+{
+  "banners": [
+    {
+      "id": "b1",
+      "image": "https://m.media-amazon.com/images/I/610NUM9jlxL._SX679_.jpg"
+    },
+    {
+      "id": "b2",
+      "image": "https://m.media-amazon.com/images/I/61giwQtR1qL._SX679_.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "iPhone 15",
+      "price": 82917,
+      "image": "https://m.media-amazon.com/images/I/610NUM9jlxL._SX679_.jpg",
+      "tags": ["Free Delivery"],
+      "category": "Electronics"
+    },
+    {
+      "id": "2",
+      "name": "AirPods Pro",
+      "price": 165917,
+      "image": "https://m.media-amazon.com/images/I/61giwQtR1qL._SX679_.jpg",
+      "tags": ["Free Delivery"],
+      "category": "Electronics"
+    },
+    {
+      "id": "3",
+      "name": "Macbook Pro",
+      "price": 20667,
+      "image": "https://m.media-amazon.com/images/I/61S+iQmF5NL._SX679_.jpg",
+      "tags": ["Selling Fast"],
+      "category": "Accessories"
+    },
+    {
+      "id": "4",
+      "name": "Apple Watch",
+      "price": 33117,
+      "image": "https://m.media-amazon.com/images/I/81kq5wkaqAL._SX679_.jpg",
+      "tags": ["Free Delivery"],
+      "category": "Accessories"
+    },
+    {
+      "id": "5",
+      "name": "Galaxy S23",
+      "price": 74617,
+      "image": "https://m.media-amazon.com/images/I/61-E0V81kBL._SX679_.jpg",
+      "tags": ["New"],
+      "category": "Electronics"
+    },
+    {
+      "id": "6",
+      "name": "Sony WH-1000XM4",
+      "price": 28967,
+      "image": "https://m.media-amazon.com/images/I/715xmAN3-qL._SX679_.jpg",
+      "tags": ["Free Delivery"],
+      "category": "Accessories"
+    },
+    {
+      "id": "7",
+      "name": "Kindle Paperwhite",
+      "price": 10707,
+      "image": "https://m.media-amazon.com/images/I/51xms5avwJL.jpg",
+      "tags": ["Selling Fast"],
+      "category": "Books"
+    },
+    {
+      "id": "8",
+      "name": "Fitbit Charge 5",
+      "price": 12367,
+      "image": "https://m.media-amazon.com/images/I/51KJ3Pe2w5L._SX679_.jpg",
+      "tags": ["Selling Fast"],
+      "category": "Accessories"
+    },
+    {
+      "id": "9",
+      "name": "Lenovo Yoga",
+      "price": 74617,
+      "image": "https://m.media-amazon.com/images/I/81PaO9Q1WFL._SX679_.jpg",
+      "tags": ["Free Delivery"],
+      "category": "Electronics"
+    },
+    {
+      "id": "10",
+      "name": "Canon EOS 200D",
+      "price": 49717,
+      "image": "https://m.media-amazon.com/images/I/71JurfqudIL._SX679_.jpg",
+      "tags": ["Selling Fast"],
+      "category": "Cameras"
+    }
+  ]
+}
