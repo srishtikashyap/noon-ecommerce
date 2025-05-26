@@ -24,29 +24,29 @@ export default function SearchScreen({ navigation }: any) {
 
   const filtered = query
     ? products.filter((item) =>
-        item.name.toLowerCase().includes(query.toLowerCase())
-      )
+      item.name.toLowerCase().includes(query.toLowerCase())
+    )
     : [];
 
   const renderItem = ({ item }: any) => {
 
     return (
       <Pressable onPress={() => navigation.navigate('ProductDetails', { productId: item.id })}>
-      <View style={styles.card}>
-        <Image source={{ uri: item.image }} style={styles.image} />
-        <View style={styles.info}>
-          <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.price}>₹{item.price.toLocaleString('en-IN')}</Text>
-          <Text style={styles.category}>{item.category}</Text>
-          <View style={styles.tagContainer}>
-            {item.tags?.map((tag: string) => (
-              <Text key={tag} style={styles.tag}>
-                {tag}
-              </Text>
-            ))}
+        <View style={styles.card}>
+          <Image source={{ uri: item.image }} style={styles.image} />
+          <View style={styles.info}>
+            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.price}>₹{item.price.toLocaleString('en-IN')}</Text>
+            <Text style={styles.category}>{item.category}</Text>
+            <View style={styles.tagContainer}>
+              {item.tags?.map((tag: string) => (
+                <Text key={tag} style={styles.tag}>
+                  {tag}
+                </Text>
+              ))}
+            </View>
           </View>
         </View>
-      </View>
       </Pressable>
     );
   };
@@ -65,6 +65,7 @@ export default function SearchScreen({ navigation }: any) {
         data={filtered}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
+        keyboardShouldPersistTaps="always"
         ListEmptyComponent={
           <Text style={styles.empty}>
             {query ? "No products match your search." : "Start typing to search products..."}
@@ -76,9 +77,9 @@ export default function SearchScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    padding: 16, 
-    flex: 1 
+  container: {
+    padding: 16,
+    flex: 1
   },
   input: {
     height: 40,
@@ -87,10 +88,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 16,
   },
-  empty: { 
-    textAlign: 'center', 
-    marginTop: 32, 
-    color: '#999' 
+  empty: {
+    textAlign: 'center',
+    marginTop: 32,
+    color: '#999'
   },
   card: {
     flexDirection: 'row',
@@ -99,32 +100,32 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 8,
   },
-  image: { 
-    width: 80, 
-    height: 80, 
-    marginRight: 12 
+  image: {
+    width: 80,
+    height: 80,
+    marginRight: 12
   },
-  info: { 
-    flex: 1, 
-    justifyContent: 'space-between' 
+  info: {
+    flex: 1,
+    justifyContent: 'space-between'
   },
-  name: { 
-    fontSize: 16, 
-    fontWeight: 'bold' 
+  name: {
+    fontSize: 16,
+    fontWeight: 'bold'
   },
-  price: { 
-    fontSize: 14, 
-    marginVertical: 4 
+  price: {
+    fontSize: 14,
+    marginVertical: 4
   },
-  category: { 
-    fontSize: 12, 
+  category: {
+    fontSize: 12,
     color: '#666',
-    marginBottom: 4 
+    marginBottom: 4
   },
-  tagContainer: { 
-    flexDirection: 'row', 
-    flexWrap: 'wrap', 
-    marginBottom: 8 
+  tagContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginBottom: 8
   },
   tag: {
     backgroundColor: '#eee',

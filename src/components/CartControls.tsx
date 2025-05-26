@@ -6,7 +6,8 @@ type CartControlsProps = {
   onIncrement: () => void;
   onDecrement: () => void;
   onRemove: () => void;
-  onAddToCart: () => void;
+  onAddToCart?: () => void;
+  showAddToCart?: boolean
 };
 
 export const CartControls = ({
@@ -15,6 +16,7 @@ export const CartControls = ({
   onDecrement,
   onRemove,
   onAddToCart,
+  showAddToCart
 }: CartControlsProps) => (
   <View>
     {quantity > 0 ? (
@@ -33,11 +35,12 @@ export const CartControls = ({
           <Text style={styles.removeText}>Remove</Text>
         </TouchableOpacity>
       </View>
-    ) : (
+    ) : showAddToCart !== false ? ( // <-- only show if flag is not false
       <TouchableOpacity style={styles.addButton} onPress={onAddToCart}>
         <Text style={styles.addButtonText}>Add to Cart</Text>
       </TouchableOpacity>
-    )}
+    ) : null}
+
   </View>
 );
 
@@ -50,23 +53,23 @@ const styles = StyleSheet.create({
   },
   increment: {
     backgroundColor: '#4CAF50',
-    width: 32,
-    height: 32,
+    width: 24,
+    height: 24,
     borderRadius: 18,
     justifyContent: 'center',
     alignItems: 'center',
   },
   decrement: {
     backgroundColor: '#f44336',
-    width: 32,
-    height: 32,
+    width: 24,
+    height: 24,
     borderRadius: 18,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   qty: {
@@ -75,7 +78,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   removeButton: {
-    marginLeft: 12,
+    marginLeft: 8,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderWidth: 1,

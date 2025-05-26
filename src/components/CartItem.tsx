@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Product } from '../types';
+import { CartControls } from './CartControls';
 
 type CartItemProps = {
   item: Product & { quantity: number };
@@ -20,55 +21,38 @@ export const CartItem = ({
     <View style={styles.details}>
       <Text style={styles.name}>{item.name}</Text>
       <Text>₹{item.price.toLocaleString('en-IN')}</Text>
-      <View style={styles.controls}>
-        <TouchableOpacity
-          onPress={onDecrement}
-          style={styles.decrement}
-        >
-          <Text style={styles.buttonText}>−</Text>
-        </TouchableOpacity>
-
-        <Text style={styles.qty}>{item.quantity}</Text>
-
-        <TouchableOpacity
-          onPress={onIncrement}
-          style={styles.increment}
-        >
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={onRemove}
-          style={styles.removeButton}
-        >
-          <Text style={styles.removeText}>Remove</Text>
-        </TouchableOpacity>
-      </View>
+      <CartControls
+        quantity={item.quantity}
+        onIncrement={onIncrement}
+        onDecrement={onDecrement}
+        onRemove={onRemove}
+        showAddToCart={false}
+      />
     </View>
   </View>
 );
 
 const styles = StyleSheet.create({
-  itemCard: { 
-    flexDirection: 'row', 
+  itemCard: {
+    flexDirection: 'row',
     marginBottom: 18,
   },
-  image: { 
-    width: 80, 
-    height: 80, 
-    marginRight: 12 
+  image: {
+    width: 80,
+    height: 80,
+    marginRight: 12
   },
-  details: { 
-    flex: 1 
+  details: {
+    flex: 1
   },
-  name: { 
-    fontSize: 16, 
-    fontWeight: 'bold' 
+  name: {
+    fontSize: 16,
+    fontWeight: 'bold'
   },
-  controls: { 
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    marginTop: 8 ,
+  controls: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 8,
     gap: 8
   },
   button: {
@@ -107,11 +91,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  qty: { 
-    fontSize: 16 
+  qty: {
+    fontSize: 16
   },
-  remove: { 
-    marginLeft: 10 
+  remove: {
+    marginLeft: 10
   },
   removeText: {
     color: '#555',

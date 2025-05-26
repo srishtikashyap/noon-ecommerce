@@ -12,7 +12,7 @@
   "products": [
     {
       "id": "1",
-      "name": "iPhone 15",
+      "name": "Neo 10R",
       "price": 82917,
       "image": "https://m.media-amazon.com/images/I/610NUM9jlxL._SX679_.jpg",
       "tags": ["Free Delivery"],
@@ -20,7 +20,7 @@
     },
     {
       "id": "2",
-      "name": "AirPods Pro",
+      "name": "iPhone 16 Pro",
       "price": 165917,
       "image": "https://m.media-amazon.com/images/I/61giwQtR1qL._SX679_.jpg",
       "tags": ["Free Delivery"],

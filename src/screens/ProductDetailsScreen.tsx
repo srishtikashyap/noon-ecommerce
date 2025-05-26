@@ -69,7 +69,7 @@ export default function ProductDetailsScreen({ route, navigation }: ProductDetai
               style={styles.goToCartButton} 
               onPress={handleGoToCart}
             >
-              <Text style={styles.goToCartText}>Go to Cart</Text>
+              <Text style={styles.goToCartText}>Go to Cart ({quantity})</Text>
             </TouchableOpacity>
           )}
         </View>

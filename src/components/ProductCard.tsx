@@ -1,7 +1,11 @@
 import React from 'react';
-import { View, Text, Image, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, Button, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { Product } from '../types';
 import { CartControls } from './CartControls';
+
+
+const { width } = Dimensions.get('window');
+const cardWidth = (width - 16 * 3) / 2;
 
 type ProductCardProps = {
   product: Product;
@@ -25,10 +29,10 @@ export const ProductCard = ({
   return (
     <View style={styles.productCard}>
       <TouchableOpacity onPress={onPress}>
-        <Image 
-          source={{ uri: product.image }} 
-          style={styles.productImage} 
-          resizeMode="contain" 
+        <Image
+          source={{ uri: product.image }}
+          style={styles.productImage}
+          resizeMode="contain"
         />
         <Text style={styles.productName}>{product.name}</Text>
         <Text style={styles.productPrice}>₹{(product.price).toLocaleString('en-IN')}</Text>
@@ -43,11 +47,11 @@ export const ProductCard = ({
 
 
       <CartControls
-      quantity={quantity}
-      onIncrement={onIncrement}
-      onDecrement={onDecrement}
-      onRemove={onRemove}
-      onAddToCart={onAddToCart}
+        quantity={quantity}
+        onIncrement={onIncrement}
+        onDecrement={onDecrement}
+        onRemove={onRemove}
+        onAddToCart={onAddToCart}
       />
 
     </View>
@@ -56,31 +60,30 @@ export const ProductCard = ({
 
 const styles = StyleSheet.create({
   productCard: {
-    width: 200,
-    marginRight: 12,
+    width: cardWidth,
     backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 8,
-    elevation: 2,
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 16,
   },
-  productImage: { 
-    width: '100%', 
-    height: 160, 
-    borderRadius: 4 
+  productImage: {
+    width: '100%',
+    height: 140,
+    borderRadius: 6,
   },
-  productName: { 
-    fontSize: 14, 
-    marginTop: 6 
+  productName: {
+    fontSize: 14,
+    marginTop: 8,
   },
-  productPrice: { 
-    fontWeight: 'bold', 
+  productPrice: {
+    fontWeight: 'bold',
     marginTop: 4,
     color: '#2196F3',
   },
-  tagContainer: { 
-    flexDirection: 'row', 
-    flexWrap: 'wrap', 
-    marginTop: 4 
+  tagContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 6,
   },
   tag: {
     backgroundColor: '#eee',
@@ -90,7 +93,7 @@ const styles = StyleSheet.create({
     marginRight: 4,
     fontSize: 10,
     color: '#555',
-    marginBottom: 8
+    marginBottom: 8,
   },
   controls: {
     flexDirection: 'row',
@@ -105,4 +108,4 @@ const styles = StyleSheet.create({
   removeButtonContainer: {
     marginLeft: 4,
   },
-}); 
+});

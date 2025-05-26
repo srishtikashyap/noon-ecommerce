@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { ScrollView, View, Image, StyleSheet, Dimensions } from 'react-native';
+import { FlatList, View, Image, StyleSheet, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
@@ -17,40 +17,37 @@ export const BannerCarousel = ({
   banners, 
   autoPlayInterval = 4000 
 }: BannerCarouselProps) => {
-  const scrollRef = useRef<ScrollView>(null);
+  const flatListRef = useRef<FlatList>(null);
   const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       const next = (activeSlide + 1) % banners.length;
-      scrollRef.current?.scrollTo({ x: next * width, animated: true });
+      flatListRef.current?.scrollToIndex({ index: next, animated: true });
       setActiveSlide(next);
     }, autoPlayInterval);
 
     return () => clearInterval(interval);
   }, [activeSlide, banners.length, autoPlayInterval]);
 
+
+
   return (
     <View>
-      <ScrollView
-        ref={scrollRef}
+      <FlatList
+        ref={flatListRef}
+        data={banners}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <Image
+            source={{ uri: item.image }}
+            style={styles.bannerImage}
+          />
+        )}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
-        onScroll={(e) =>
-          setActiveSlide(Math.floor(e.nativeEvent.contentOffset.x / width))
-        }
-        scrollEventThrottle={16}
-        style={styles.carouselContainer}
-      >
-        {banners.map((banner) => (
-          <Image 
-            key={banner.id} 
-            source={{ uri: banner.image }} 
-            style={styles.bannerImage} 
-          />
-        ))}
-      </ScrollView>
+      />
 
       <View style={styles.dotsContainer}>
         {banners.map((_, i) => (
@@ -65,10 +62,6 @@ export const BannerCarousel = ({
 };
 
 const styles = StyleSheet.create({
-  carouselContainer: { 
-    height: 150, 
-    marginBottom: 8 
-  },
   bannerImage: {
     width: width - 32,
     height: 150,
@@ -79,6 +72,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginBottom: 12,
+    marginTop: 4,
   },
   dot: {
     width: 8,
@@ -90,4 +84,4 @@ const styles = StyleSheet.create({
   activeDot: {
     backgroundColor: '#000',
   },
-}); 
+});
